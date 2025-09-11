@@ -46,6 +46,55 @@
             border-color: #fff;
             background-color: #111;
         }
+        /* Slideshow dark */
+        .slideshow-container {
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+        .mySlides {
+            display: none;
+        }
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s;
+            user-select: none;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 3px;
+        }
+        .next { right: 0; }
+        .prev:hover, .next:hover { background-color: rgba(255,255,255,0.5); }
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 5px 3px;
+            background-color: #555;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover { background-color: #fff; }
+        /* Divider sottile tra le sezioni */
+        section { border-bottom: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body class="min-h-screen">
@@ -96,136 +145,29 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Slideshow -->
             <div class="product-card p-6 rounded-lg" data-aos="fade-right">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slideshow</title>
-  <style>
-    * {box-sizing: border-box;}
-    body {font-family: Arial, sans-serif; margin:0; background:#f0f0f0;}
-
-    .slideshow-container {
-      max-width: 800px;  /* Limita la larghezza massima dello slideshow */
-      margin: 50px auto; /* Centra lo slideshow */
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      background: #000;
-    }
-
-    .mySlides {
-      display: none;
-    }
-
-    img {
-      width: 100%;
-      height: auto; /* Mantiene proporzioni verticali */
-      object-fit: contain; /* Mostra l'intera immagine senza tagliarla */
-      display: block;
-      margin: auto;
-    }
-
-    /* Pulsanti avanti/indietro */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 24px;
-      transition: 0.3s;
-      user-select: none;
-      background-color: rgba(0,0,0,0.5);
-      border-radius: 3px;
-    }
-    .next { right: 0; }
-    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
-
-    /* Indicatori sotto */
-    .dot {
-      cursor: pointer;
-      height: 12px;
-      width: 12px;
-      margin: 5px 3px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
-    }
-    .active, .dot:hover { background-color: #717171; }
-  </style>
-</head>
-<body>
-
-<div class="slideshow-container">
-
-  <div class="mySlides">
-    <img src="ChatGPT Image Sep 11, 2025, 02_24_58 AM.png" alt="">
-  </div>
-
-  <div class="mySlides">
-    <img src="ChatGPT Image Sep 11, 2025, 02_59_56 AM" alt="">
-  </div>
-    
-      <div class="mySlides">
-    <img src="ChatGPT Image Sep 11, 2025, 03_02_17 AM" alt="">
-  </div>
-
-  <!-- Pulsanti -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-
-<br>
-
-<!-- Indicatori -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
-
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Funzioni frecce
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-// Mostra slide
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-
-// Slideshow automatico ogni 3 secondi
-setInterval(function(){ plusSlides(1); }, 3000);
-</script>
-
-</body>
-</html>
-
+                <div class="slideshow-container">
+                    <div class="mySlides">
+                        <img src="ChatGPT Image Sep 11, 2025, 02_24_58 AM.png" alt="">
+                    </div>
+                    <div class="mySlides">
+                        <img src="ChatGPT Image Sep 11, 2025, 02_59_56 AM" alt="">
+                    </div>
+                    <div class="mySlides">
+                        <img src="ChatGPT Image Sep 11, 2025, 03_02_17 AM" alt="">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span> 
+                    <span class="dot" onclick="currentSlide(2)"></span> 
+                    <span class="dot" onclick="currentSlide(3)"></span> 
+                </div>
             </div>
+
             <div class="space-y-6" data-aos="fade-left">
                 <h3 class="text-2xl font-bold">VANTA BLACK TRACKSUIT</h3>
                 <p class="text-gray-400">
@@ -236,16 +178,12 @@ setInterval(function(){ plusSlides(1); }, 3000);
                     <div class="size-selector grid grid-cols-5 gap-2">
                         <input type="radio" name="size" id="size-xs" class="hidden" checked>
                         <label for="size-xs" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">XS</label>
-                        
                         <input type="radio" name="size" id="size-s" class="hidden">
                         <label for="size-s" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">S</label>
-                        
                         <input type="radio" name="size" id="size-m" class="hidden">
                         <label for="size-m" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">M</label>
-                        
                         <input type="radio" name="size" id="size-l" class="hidden">
                         <label for="size-l" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">L</label>
-                        
                         <input type="radio" name="size" id="size-xl" class="hidden">
                         <label for="size-xl" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">XL</label>
                     </div>
@@ -301,7 +239,7 @@ setInterval(function(){ plusSlides(1); }, 3000);
         </div>
     </section>
 
-            <!-- Payment Section -->
+    <!-- Payment Section -->
     <section id="payment" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">🔹 Available Payment Methods</h2>
@@ -357,6 +295,30 @@ setInterval(function(){ plusSlides(1); }, 3000);
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-xl font-bold gradient-text">VANTA</span>
+                    <p class="text-gray-500 mt-2">The blackest black ever created.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="mail"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-900 text-center text-gray-500 text-sm">
+                <p>© 2023 Vanta Black. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -382,40 +344,8 @@ setInterval(function(){ plusSlides(1); }, 3000);
             maxDistance: 22.00,
             spacing: 18.00
         });
-    </script>
-</body>
-</html>
 
-  <!-- Footer -->
-    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-xl font-bold gradient-text">VANTA</span>
-                    <p class="text-gray-500 mt-2">The blackest black ever created.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i data-feather="instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i data-feather="twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i data-feather="mail"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-900 text-center text-gray-500 text-sm">
-                <p>© 2023 Vanta Black. All rights reserved.</p>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
+        // Slideshow
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        function
