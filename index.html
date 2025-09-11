@@ -8,29 +8,31 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script src="https://unpkg.com/feather-icons"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Archivo', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
-.vanta-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+body { font-family: 'Archivo', sans-serif; background-color: #000; color: #fff; overflow-x: hidden; margin:0; }
+.vanta-bg { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.3; }
 .gradient-text { background: linear-gradient(90deg, #fff 0%, #aaa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.product-card { transition: all 0.3s ease; border: 1px solid #222; }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255,255,255,0.05); }
-.size-selector input[type="radio"]:checked + label { border-color: #fff; background-color: #111; }
 section { border-bottom: 1px solid rgba(255,255,255,0.1); }
 
 /* Slideshow */
-.slideshow-container { width: 100%; position: relative; overflow: hidden; border-radius: 10px; background: #000; }
-.mySlides { display: none; }
-.mySlides img { width: 100%; height: auto; object-fit: contain; display: block; margin: auto; }
-.prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 16px; margin-top: -22px; color: #fff; font-weight: bold; font-size: 24px; transition: 0.3s; user-select: none; background-color: rgba(255,255,255,0.2); border-radius: 3px; }
+.slideshow-container { position: relative; width: 100%; height: 500px; overflow: hidden; border-radius: 10px; }
+.mySlides { display: none; width: 100%; height: 100%; }
+.mySlides img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 16px; margin-top: -22px; color: #fff; font-weight: bold; font-size: 24px; transition: 0.3s; background-color: rgba(255,255,255,0.2); border-radius: 3px; user-select: none; }
 .next { right: 0; }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.5); }
 .dot { cursor: pointer; height: 12px; width: 12px; margin: 5px 3px; background-color: #555; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
 .active, .dot:hover { background-color: #fff; }
+
+/* Product Info */
+.product-card { transition: all 0.3s ease; border: 1px solid #222; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255,255,255,0.05); }
+.size-selector input[type="radio"]:checked + label { border-color: #fff; background-color: #111; }
+.size-selector label { cursor: pointer; transition: all 0.2s; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -79,8 +81,24 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
   </div>
 
   <div class="grid md:grid-cols-2 gap-12 items-start">
-    <!-- Product Info (destra) -->
-    <div class="space-y-6 order-2 md:order-2" data-aos="fade-left">
+    <!-- Slideshow -->
+    <div class="product-card p-6 rounded-lg" data-aos="fade-right">
+      <div class="slideshow-container">
+        <div class="mySlides"><img src="image1.png"></div>
+        <div class="mySlides"><img src="image2.png"></div>
+        <div class="mySlides"><img src="image3.png"></div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text-center mt-4">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="space-y-6" data-aos="fade-left">
       <h3 class="text-2xl font-bold">VANTA BLACK TRACKSUIT</h3>
       <p class="text-gray-400">
         The Vanta Tracksuit is not just clothing—it's an experience. Made from proprietary Vanta Black fabric, this tracksuit creates the illusion of infinite depth when worn.
@@ -89,37 +107,21 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
         <h4 class="font-medium mb-3">SIZE</h4>
         <div class="size-selector grid grid-cols-5 gap-2">
           <input type="radio" name="size" id="size-xs" class="hidden" checked>
-          <label for="size-xs" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">XS</label>
+          <label for="size-xs" class="border border-gray-700 rounded text-center py-2 hover:border-gray-500">XS</label>
           <input type="radio" name="size" id="size-s" class="hidden">
-          <label for="size-s" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">S</label>
+          <label for="size-s" class="border border-gray-700 rounded text-center py-2 hover:border-gray-500">S</label>
           <input type="radio" name="size" id="size-m" class="hidden">
-          <label for="size-m" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">M</label>
+          <label for="size-m" class="border border-gray-700 rounded text-center py-2 hover:border-gray-500">M</label>
           <input type="radio" name="size" id="size-l" class="hidden">
-          <label for="size-l" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">L</label>
+          <label for="size-l" class="border border-gray-700 rounded text-center py-2 hover:border-gray-500">L</label>
           <input type="radio" name="size" id="size-xl" class="hidden">
-          <label for="size-xl" class="border border-gray-700 rounded text-center py-2 cursor-pointer hover:border-gray-500">XL</label>
+          <label for="size-xl" class="border border-gray-700 rounded text-center py-2 hover:border-gray-500">XL</label>
         </div>
       </div>
       <div class="pt-6">
         <button class="w-full py-4 bg-white text-black font-medium rounded hover:bg-gray-200 transition duration-300">
           BUY NOW — €79
         </button>
-      </div>
-    </div>
-
-    <!-- Slideshow (sinistra) -->
-    <div class="product-card p-6 rounded-lg order-1 md:order-1" data-aos="fade-right">
-      <div class="slideshow-container">
-        <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 02_24_58 AM"></div>
-        <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 02_59_56 AM"></div>
-        <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 03_02_17 AM"></div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-      <div style="text-align:center; margin-top: 10px;">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
       </div>
     </div>
   </div>
@@ -157,64 +159,50 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
 <div class="text-center mb-16" data-aos="fade-up">
   <h2 class="text-3xl md:text-4xl font-bold mb-4">🔹 Available Payment Methods</h2>
   <p class="text-gray-400 max-w-2xl mx-auto">
-    You can choose between two fast and secure payment methods: <span class="font-semibold">PayPal – Friends & Family</span> or <span class="font-semibold">Cryptocurrency</span>.
+    You can choose between PayPal – Friends & Family or Cryptocurrency. Follow instructions carefully.
   </p>
 </div>
 <div class="grid md:grid-cols-2 gap-12 items-start">
-  <!-- PayPal -->
   <div class="space-y-6" data-aos="fade-right">
-    <h3 class="text-2xl font-bold mb-4">💳 Payment via PayPal</h3>
+    <h3 class="text-2xl font-bold mb-4">💳 PayPal</h3>
     <ol class="list-decimal list-inside text-gray-400 space-y-2">
-      <li>Log in to your PayPal account.</li>
-      <li>Click on “Send Money”.</li>
+      <li>Log in to PayPal.</li>
+      <li>Click “Send Money”.</li>
       <li>Enter our PayPal address: <span class="text-white font-semibold">@US</span></li>
       <li>Select “Friends & Family”.</li>
       <li>Enter the exact amount.</li>
-      <li>Write your order in the payment message.</li>
-      <li>Confirm the payment.</li>
-      <li>Send a copy of the receipt to confirm.</li>
+      <li>Write your order in the message.</li>
+      <li>Confirm payment.</li>
+      <li>Send a copy of receipt.</li>
     </ol>
-    <div class="bg-gray-900 p-6 rounded-lg mt-6">
-      <h4 class="font-semibold mb-3">🔹 Why it’s safe:</h4>
-      <p class="text-gray-400">Fast, direct, free of extra charges, money arrives instantly, personal data safe.</p>
-    </div>
   </div>
-
-  <!-- Crypto -->
   <div class="space-y-6" data-aos="fade-left">
-    <h3 class="text-2xl font-bold mb-4">🪙 Payment via Cryptocurrency</h3>
+    <h3 class="text-2xl font-bold mb-4">🪙 Cryptocurrency</h3>
     <ol class="list-decimal list-inside text-gray-400 space-y-2">
-      <li>Open your cryptocurrency wallet.</li>
+      <li>open this file to have our Wallet info.</li>
+      <li>Open your wallet.</li>
       <li>Select the currency.</li>
       <li>Copy our wallet address.</li>
-      <li>Enter the exact amount.</li>
-      <li>Write your order in the transaction note.</li>
-      <li>Confirm the transaction.</li>
-      <li>Send a copy of the transaction.</li>
+      <li>Enter exact amount.</li>
+      <li>Write your order in note.</li>
+      <li>Confirm transaction.</li>
+      <li>Send transaction copy.</li>
     </ol>
-    <div class="bg-gray-900 p-6 rounded-lg mt-6">
-      <h4 class="font-semibold mb-3">🔹 Why it’s safe:</h4>
-      <p class="text-gray-400">Direct and transparent, no banks or intermediaries, fast and secure.</p>
-    </div>
   </div>
 </div>
 </section>
 
 <!-- Footer -->
 <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-900">
-<div class="max-w-7xl mx-auto">
-  <div class="flex flex-col md:flex-row justify-between items-center">
-    <div class="mb-6 md:mb-0">
-      <span class="text-xl font-bold gradient-text">VANTA</span>
-      <p class="text-gray-500 mt-2">The blackest black ever created.</p>
-    </div>
-    <div class="flex space-x-6">
-      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
-      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
-      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="mail"></i></a>
-    </div>
+<div class="max-w-7xl mx-auto text-center">
+  <span class="text-xl font-bold gradient-text">VANTA</span>
+  <p class="text-gray-500 mt-2">The blackest black ever created.</p>
+  <div class="flex justify-center space-x-6 mt-4">
+    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
+    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="mail"></i></a>
   </div>
-  <div class="mt-12 pt-8 border-t border-gray-900 text-center text-gray-500 text-sm">
+  <div class="mt-12 pt-8 border-t border-gray-900 text-gray-500 text-sm">
     <p>© 2023 Vanta Black. All rights reserved.</p>
   </div>
 </div>
@@ -223,7 +211,6 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
 <script>
 AOS.init({duration:800, easing:'ease-in-out', once:true});
 feather.replace();
-
 VANTA.NET({
   el:"#vanta-bg",
   mouseControls:true,
@@ -247,8 +234,8 @@ function plusSlides(n){ showSlides(slideIndex += n); }
 function currentSlide(n){ showSlides(slideIndex = n); }
 function showSlides(n){
   let i;
-  let slides=document.getElementsByClassName("mySlides");
-  let dots=document.getElementsByClassName("dot");
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
   if(n>slides.length){slideIndex=1}
   if(n<1){slideIndex=slides.length}
   for(i=0;i<slides.length;i++){slides[i].style.display="none";}
