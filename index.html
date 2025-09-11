@@ -84,8 +84,8 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
     <!-- Slideshow -->
     <div class="product-card p-6 rounded-lg" data-aos="fade-right">
       <div class="slideshow-container">
+        <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 02_59_56 AM"></div>
         <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 02_24_58 AM"></div>
-        <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 02_59_56 AMg"></div>
         <div class="mySlides"><img src="ChatGPT Image Sep 11, 2025, 03_02_17 AM"></div>
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -159,55 +159,89 @@ section { border-bottom: 1px solid rgba(255,255,255,0.1); }
 <div class="text-center mb-16" data-aos="fade-up">
   <h2 class="text-3xl md:text-4xl font-bold mb-4">🔹 Available Payment Methods</h2>
   <p class="text-gray-400 max-w-2xl mx-auto">
-    You can choose between PayPal – Friends & Family or Cryptocurrency. Follow instructions carefully.
+    Choose between two fast and secure payment methods: <span class="font-semibold">PayPal – Friends & Family</span> or <span class="font-semibold">Cryptocurrency</span>.
   </p>
 </div>
 <div class="grid md:grid-cols-2 gap-12 items-start">
+  <!-- PayPal -->
   <div class="space-y-6" data-aos="fade-right">
-    <h3 class="text-2xl font-bold mb-4">💳 PayPal</h3>
+    <h3 class="text-2xl font-bold mb-4">💳 Payment via PayPal (Friends & Family)</h3>
     <ol class="list-decimal list-inside text-gray-400 space-y-2">
-      <li>Log in to PayPal.</li>
+      <li>Log in to your PayPal account.</li>
       <li>Click “Send Money”.</li>
-      <li>Enter our PayPal address: <span class="text-white font-semibold">@US</span></li>
+      <li>Enter our PayPal: <span class="text-white font-semibold">@US</span></li>
       <li>Select “Friends & Family”.</li>
-      <li>Enter the exact amount.</li>
+      <li>Enter exact order amount.</li>
       <li>Write your order in the message.</li>
       <li>Confirm payment.</li>
-      <li>Send a copy of receipt.</li>
+      <li>Send receipt via email/WhatsApp.</li>
     </ol>
+    <div class="bg-gray-900 p-6 rounded-lg mt-6">
+      <h4 class="font-semibold mb-3">🔹 Why it’s safe:</h4>
+      <p class="text-gray-400">Fast, direct, free of extra charges. Money arrives instantly, personal data remains private.</p>
+    </div>
   </div>
+
+  <!-- Crypto -->
   <div class="space-y-6" data-aos="fade-left">
-    <h3 class="text-2xl font-bold mb-4">🪙 Cryptocurrency</h3>
+    <h3 class="text-2xl font-bold mb-4">🪙 Payment via Cryptocurrency</h3>
     <ol class="list-decimal list-inside text-gray-400 space-y-2">
-      <li>Open your wallet.</li>
-      <li>Select the currency.</li>
+      <li>Open your crypto wallet (MetaMask, Trust Wallet, etc.).</li>
+      <li>Select cryptocurrency.</li>
       <li>Copy our wallet address.</li>
       <li>Enter exact amount.</li>
-      <li>Write your order in note.</li>
+      <li>Write your order in the transaction note.</li>
       <li>Confirm transaction.</li>
-      <li>Send transaction copy.</li>
+      <li>Send transaction copy via email/WhatsApp.</li>
     </ol>
+    <div class="bg-gray-900 p-6 rounded-lg mt-6">
+      <h4 class="font-semibold mb-3">🔹 Why it’s safe:</h4>
+      <p class="text-gray-400">Direct, transparent, recorded on blockchain. No banks involved. Fast and secure, wallet remains private.</p>
+    </div>
   </div>
 </div>
 </section>
 
 <!-- Footer -->
 <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-900">
-<div class="max-w-7xl mx-auto text-center">
-  <span class="text-xl font-bold gradient-text">VANTA</span>
-  <p class="text-gray-500 mt-2">The blackest black ever created.</p>
-  <div class="flex justify-center space-x-6 mt-4">
-    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
-    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
-    <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="mail"></i></a>
+<div class="max-w-7xl mx-auto">
+  <div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="mb-6 md:mb-0">
+      <span class="text-xl font-bold gradient-text">VANTA</span>
+      <p class="text-gray-500 mt-2">The blackest black ever created.</p>
+    </div>
+    <div class="flex space-x-6">
+      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
+      <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="mail"></i></a>
+    </div>
   </div>
-  <div class="mt-12 pt-8 border-t border-gray-900 text-gray-500 text-sm">
+  <div class="mt-12 pt-8 border-t border-gray-900 text-center text-gray-500 text-sm">
     <p>© 2023 Vanta Black. All rights reserved.</p>
   </div>
 </div>
 </footer>
 
 <script>
+// Slideshow
+let slideIndex = 1;
+showSlides(slideIndex);
+function plusSlides(n){ showSlides(slideIndex += n); }
+function currentSlide(n){ showSlides(slideIndex = n); }
+function showSlides(n){
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if(n>slides.length){slideIndex=1}
+  if(n<1){slideIndex=slides.length}
+  for(i=0;i<slides.length;i++){slides[i].style.display="none";}
+  for(i=0;i<dots.length;i++){dots[i].className=dots[i].className.replace(" active","");}
+  slides[slideIndex-1].style.display="block";
+  dots[slideIndex-1].className += " active";
+}
+setInterval(function(){ plusSlides(1); }, 3000);
+
+// Vanta & AOS
 AOS.init({duration:800, easing:'ease-in-out', once:true});
 feather.replace();
 VANTA.NET({
@@ -225,23 +259,6 @@ VANTA.NET({
   maxDistance:22,
   spacing:18
 });
-
-// Slideshow
-let slideIndex = 1;
-showSlides(slideIndex);
-function plusSlides(n){ showSlides(slideIndex += n); }
-function currentSlide(n){ showSlides(slideIndex = n); }
-function showSlides(n){
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if(n>slides.length){slideIndex=1}
-  if(n<1){slideIndex=slides.length}
-  for(i=0;i<slides.length;i++){slides[i].style.display="none";}
-  for(i=0;i<dots.length;i++){dots[i].className=dots[i].className.replace(" active","");}
-  slides[slideIndex-1].style.display="block";
-  dots[slideIndex-1].className += " active";
-}
 </script>
 </body>
 </html>
